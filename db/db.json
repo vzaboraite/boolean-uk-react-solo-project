@@ -1,0 +1,38 @@
+{
+  "collections": [
+    {
+      "id": 1,
+      "title": "Advanced chess tactics"
+    },
+    {
+      "id": 2,
+      "title": "Beginner chess tactics"
+    }
+  ],
+  "exercises": [
+    {
+      "id": 1,
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
+      "solution": "",
+      "difficulty": "hard",
+      "collectionId": 1
+    },
+    {
+      "id": 2,
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
+      "solution": "",
+      "difficulty": "medium",
+      "collectionId": 1
+    },
+    {
+      "id": 3,
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
+      "solution": "",
+      "difficulty": "easy",
+      "collectionId": 2
+    }
+  ]
+}

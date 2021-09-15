@@ -1,0 +1,4 @@
+{
+  "/collections": "/collections?_embed=exercises",
+  "/collections/*": "/collections/$1?_embed=exercises"
+}
