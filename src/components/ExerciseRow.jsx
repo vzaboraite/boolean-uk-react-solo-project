@@ -1,5 +1,4 @@
-import { Button } from "@material-ui/core";
-
+import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 export default function ExerciseRow({ exercise }) {

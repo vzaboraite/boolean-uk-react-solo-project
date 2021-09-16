@@ -1,12 +1,11 @@
 import {
   Button,
-  FormControl,
   FormControlLabel,
   FormLabel,
   Radio,
   RadioGroup,
   TextField,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export default function ExerciseForm() {
   return (

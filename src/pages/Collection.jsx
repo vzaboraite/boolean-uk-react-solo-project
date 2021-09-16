@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 import { useParams, useHistory } from "react-router-dom";
 import Exercises from "../components/Exercises";
