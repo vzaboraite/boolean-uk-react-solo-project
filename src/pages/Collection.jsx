@@ -29,6 +29,12 @@ export default function Collection({ collections }) {
         {exercises.length}
         {exercises.length === 1 ? "exercise" : "exercises"}
       </p>
+      <Button
+        onClick={() => history.push(`/collections/${title}/new-exercise`)}
+        variant="outlined"
+      >
+        Create exercise
+      </Button>
       <Exercises exercises={exercises} />
     </main>
   );
