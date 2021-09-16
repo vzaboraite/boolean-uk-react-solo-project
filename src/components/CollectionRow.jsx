@@ -9,7 +9,7 @@ export default function CollectionRow({ collection }) {
       <h2>{collection.title}</h2>
       <p>
         {collection.exercises.length}
-        {collection.exercises.length === 1 ? "exercise" : "exercises"}
+        {collection.exercises.length === 1 ? " exercise" : " exercises"}
       </p>
       <Button
         onClick={() => history.push(`/collections/${collection.title}`)}
