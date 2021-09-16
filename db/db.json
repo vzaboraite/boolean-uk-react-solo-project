@@ -2,11 +2,13 @@
   "collections": [
     {
       "id": 1,
-      "title": "Advanced chess tactics"
+      "title": "Advanced chess tactics",
+      "description": "This an advanced collection."
     },
     {
       "id": 2,
-      "title": "Beginner chess tactics"
+      "title": "Beginner chess tactics",
+      "description": "This is a collection for beginners."
     }
   ],
   "exercises": [
