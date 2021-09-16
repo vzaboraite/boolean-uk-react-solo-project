@@ -1,11 +1,12 @@
-import Exercise from "./Exercise";
+import React from "react";
+import ExerciseRow from "./ExerciseRow";
 
 export default function Exercises({ exercises }) {
   console.log("Inside Exercises component: ", exercises);
   return (
     <ul>
       {exercises.map((exercise, index) => {
-        return <Exercise exercise={exercise} key={index} />;
+        return <ExerciseRow exercise={exercise} key={index} />;
       })}
     </ul>
   );
