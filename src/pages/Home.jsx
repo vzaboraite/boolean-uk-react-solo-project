@@ -1,4 +1,4 @@
-import Collections from "../components/Collections";
+import Collections from "./Collections";
 
 export default function Home({ collections }) {
   return (

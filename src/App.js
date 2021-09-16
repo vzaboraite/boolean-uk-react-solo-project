@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import Collections from "./components/Collections";
-import Collection from "./components/Collection";
-import Header from "./components/Header";
+
 import Home from "./pages/Home";
+import Collections from "./pages/Collections";
+import Collection from "./pages/Collection";
+import Exercise from "./pages/Exercise";
+import NotFound from "./pages/NotFound";
+
+import Header from "./components/Header";
 import Exercises from "./components/Exercises";
 import CollectionForm from "./components/CollectionForm";
 import ExerciseForm from "./components/ExerciseForm";
-import NotFound from "./pages/NotFound";
 
 function App() {
   const [collections, setCollections] = useState([]);
