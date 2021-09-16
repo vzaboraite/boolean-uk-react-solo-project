@@ -25,10 +25,12 @@ export default function Collection({ collections }) {
         Back
       </Button>
       <h2>{title}</h2>
-      <p>
-        {exercises.length}
-        {exercises.length === 1 ? "exercise" : "exercises"}
-      </p>
+      {exercises.length > 0 && (
+        <p>
+          {exercises.length}
+          {exercises.length === 1 ? " exercise" : " exercises"}
+        </p>
+      )}
       <Button
         onClick={() => history.push(`/collections/${title}/new-exercise`)}
         variant="outlined"
