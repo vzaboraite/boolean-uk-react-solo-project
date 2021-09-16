@@ -50,13 +50,16 @@ function App() {
           <ExerciseForm />
         </Route>
         <Route exact path="/collections">
-          <Collections collections={collections} />
+          {collections && <Collections collections={collections} />}
         </Route>
         <Route exact path="/collections/:collectionTitle">
-          <Collection />
+          <Collection collections={collections} />
         </Route>
         <Route exact path="/exercises">
-          <Exercises exercises={exercises} />
+          {exercises && <Exercises exercises={exercises} />}
+        </Route>
+        <Route exact path="/exercises/:exerciseId">
+          <Exercise exercises={exercises} />
         </Route>
         <Route>
           <NotFound />
