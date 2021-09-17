@@ -60,6 +60,18 @@ export default function EditCollection({
       });
   };
 
+  const handleDeleteButton = () => {
+    const collectionToDelete = { ...collectionToEdit };
+    const { id } = collectionToDelete;
+
+    fetch(`http://localhost:3030/collections/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then(() => {
+        getCollections();
+        history.push("/collections");
+      });
+  };
+
   return (
     <form onSubmit={handleFormSubmit}>
       <h2>Edit Collection</h2>
@@ -90,6 +102,9 @@ export default function EditCollection({
       <div>
         <Button type="submit" variant="outlined">
           Edit
+        </Button>
+        <Button type="button" variant="outlined" onClick={handleDeleteButton}>
+          Delete
         </Button>
       </div>
     </form>
