@@ -65,6 +65,7 @@ function App() {
             <CollectionForm
               collections={collections}
               setCollections={setCollections}
+              getCollections={getCollections}
             />
           </Route>
           <Route exact path="/collections/:collectionTitle/new-exercise">

@@ -1,7 +1,11 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 
-export default function CollectionForm({ collections, setCollections }) {
+export default function CollectionForm({
+  collections,
+  setCollections,
+  getCollections,
+}) {
   // console.log("Inside CollectionForm: ", collections, setCollections);
 
   const [collectionInputs, setCollectionInputs] = useState({
@@ -47,6 +51,7 @@ export default function CollectionForm({ collections, setCollections }) {
       .then((newCollection) => {
         console.log({ newCollection });
         setCollections([...collections, newCollection]);
+        getCollections();
       });
   };
 
