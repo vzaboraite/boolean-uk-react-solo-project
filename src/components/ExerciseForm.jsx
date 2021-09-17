@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 export default function ExerciseForm({
   exercises,
@@ -18,6 +18,7 @@ export default function ExerciseForm({
   console.log("Inside ExerciseForm: ", exercises);
 
   const { collectionTitle } = useParams();
+  const history = useHistory();
 
   const collection = collections.find(
     (collection) => collection.title === collectionTitle
@@ -73,6 +74,7 @@ export default function ExerciseForm({
         console.log({ newExercise });
         setExercises([...exercises, newExercise]);
         getCollections();
+        history.push(`/collections/${collection.title}`);
       });
   };
 
