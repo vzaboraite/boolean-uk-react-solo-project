@@ -1,5 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function CollectionForm({
   collections,
@@ -7,6 +8,7 @@ export default function CollectionForm({
   getCollections,
 }) {
   // console.log("Inside CollectionForm: ", collections, setCollections);
+  const history = useHistory();
 
   const [collectionInputs, setCollectionInputs] = useState({
     title: "",
@@ -52,6 +54,7 @@ export default function CollectionForm({
         console.log({ newCollection });
         setCollections([...collections, newCollection]);
         getCollections();
+        history.push("/collections");
       });
   };
 
