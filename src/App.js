@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Exercises from "./components/Exercises";
 import CollectionForm from "./components/CollectionForm";
 import ExerciseForm from "./components/ExerciseForm";
+import EditCollection from "./components/EditCollection";
 
 function App() {
   const [collections, setCollections] = useState([]);
@@ -81,6 +82,13 @@ function App() {
           </Route>
           <Route exact path="/collections/:collectionTitle">
             <Collection collections={collections} />
+          </Route>
+          <Route exact path="/collections/:collectionTitle/edit-collection">
+            <EditCollection
+              collections={collections}
+              setCollections={setCollections}
+              getCollections={getCollections}
+            />
           </Route>
           <Route exact path="/exercises">
             <Exercises exercises={exercises} />

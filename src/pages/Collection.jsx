@@ -37,6 +37,14 @@ export default function Collection({ collections }) {
       >
         Create exercise
       </Button>
+      <Button
+        onClick={() =>
+          history.push(`/collections/${collection.title}/edit-collection`)
+        }
+        variant="outlined"
+      >
+        Edit collection
+      </Button>
       <Exercises exercises={exercises} />
     </main>
   );
