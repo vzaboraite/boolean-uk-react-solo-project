@@ -12,7 +12,9 @@ export default function CollectionRow({ collection }) {
         {collection.exercises.length === 1 ? " exercise" : " exercises"}
       </p>
       <Button
-        onClick={() => history.push(`/collections/${collection.title}`)}
+        onClick={() =>
+          history.push(`/collections/${collection.id}/${collection.title}`)
+        }
         variant="outlined"
       >
         View collection

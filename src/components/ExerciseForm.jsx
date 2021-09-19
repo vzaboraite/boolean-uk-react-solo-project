@@ -8,24 +8,12 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { findById } from "../utils/CommonFunctions";
 
-export default function ExerciseForm({
-  exercises,
-  collections,
-  setExercises,
-  getCollections,
-}) {
-  console.log("Inside ExerciseForm: ", exercises);
-
-  const { collectionTitle } = useParams();
+export default function ExerciseForm({ collections, getNewestData }) {
   const history = useHistory();
-
-  const collection = collections.find(
-    (collection) => collection.title === collectionTitle
-  );
-
-  console.log({ collection });
-
+  const { collectionId } = useParams();
+  const [collection] = useState(findById(collections, collectionId));
   const [exerciseInputs, setExerciseInputs] = useState({
     FEN: "",
     description: "",
@@ -33,18 +21,16 @@ export default function ExerciseForm({
     difficulty: "",
   });
 
+  if (!collection) {
+    history.push("/not-found");
+    return null;
+  }
+
   const handleFormInput = (event) => {
-    console.log(
-      "Inside handleFormInput: ",
-      event.target.name,
-      event.target.value,
-      event.target.checked
-    );
     const inputName = event.target.name;
     const targetValue = event.target.value;
 
     setExerciseInputs({ ...exerciseInputs, [inputName]: targetValue });
-    console.log({ exerciseInputs });
   };
 
   const handleFormSubmit = (event) => {
@@ -70,11 +56,9 @@ export default function ExerciseForm({
 
     fetch("http://localhost:3030/exercises", fetchOptions)
       .then((res) => res.json())
-      .then((newExercise) => {
-        console.log({ newExercise });
-        setExercises([...exercises, newExercise]);
-        getCollections();
-        history.push(`/collections/${collection.title}`);
+      .then(() => {
+        getNewestData();
+        history.push(`/collections/${collection.id}/${collection.title}`);
       });
   };
 

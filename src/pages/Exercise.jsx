@@ -1,19 +1,11 @@
+import { Button } from "@mui/material";
 import { useParams, useHistory } from "react-router-dom";
+import { findById } from "../utils/CommonFunctions";
 
 export default function Exercise({ exercises }) {
-  console.log("Inside Exercise: ", exercises);
-
-  const { exerciseId } = useParams();
   const history = useHistory();
-
-  // If exercise id is not a number, redirect to `404 Page Not Found`
-  if (!Number.isInteger(parseInt(exerciseId))) {
-    history.push("/not-found");
-  }
-
-  const exercise = exercises.find(
-    (exercise) => exercise.id === parseInt(exerciseId)
-  );
+  const { exerciseId } = useParams();
+  const exercise = findById(exercises, exerciseId);
 
   // If exercise wasn't found, redirect to `404 Page Not Found`
   if (!exercise) {
@@ -21,15 +13,19 @@ export default function Exercise({ exercises }) {
     return null;
   }
 
-  const { difficulty, FEN, description, id, collectionId } = exercise;
+  const { difficulty, FEN, description, id, collectionId, solution } = exercise;
 
   return (
     <main>
+      <Button onClick={() => history.goBack()} variant="outlined">
+        Back
+      </Button>
       <h2>Exercise #{id}</h2>
       <h3>Collection: {collectionId}</h3>
       <span>Difficulty: {difficulty}</span>
       <p>Starting position: {FEN}</p>
-      <p>{description}</p>
+      {description !== "" && <p>Description: {description}</p>}
+      <p>Solution: {solution}</p>
     </main>
   );
 }

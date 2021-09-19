@@ -2,44 +2,40 @@ import { Button } from "@mui/material";
 
 import { useParams, useHistory } from "react-router-dom";
 import Exercises from "../components/Exercises";
+import { findById } from "../utils/CommonFunctions";
 
 export default function Collection({ collections }) {
-  console.log("Inside Collection component: ", collections);
-
-  const { collectionTitle } = useParams();
   const history = useHistory();
+  const { collectionId } = useParams();
 
-  const collection = collections.find(
-    (collection) => collection.title === collectionTitle
-  );
-  console.log({ collection });
-
-  const { title, exercises } = collection;
+  const collection = findById(collections, collectionId);
 
   if (!collection) {
+    history.push("/not-found");
     return null;
   }
+
+  const { id, title, exercises } = collection;
+
   return (
     <main>
-      <Button onClick={() => history.push("/")} variant="outlined">
+      <Button onClick={() => history.push("/collections")} variant="outlined">
         Back
       </Button>
       <h2>{title}</h2>
-      {exercises.length > 0 && (
-        <p>
-          {exercises.length}
-          {exercises.length === 1 ? " exercise" : " exercises"}
-        </p>
-      )}
+      <p>
+        {exercises.length}
+        {exercises.length === 1 ? " exercise" : " exercises"}
+      </p>
       <Button
-        onClick={() => history.push(`/collections/${title}/new-exercise`)}
+        onClick={() => history.push(`/collections/${id}/${title}/new-exercise`)}
         variant="outlined"
       >
         Create exercise
       </Button>
       <Button
         onClick={() =>
-          history.push(`/collections/${collection.title}/edit-collection`)
+          history.push(`/collections/${id}/${title}/edit-collection`)
         }
         variant="outlined"
       >

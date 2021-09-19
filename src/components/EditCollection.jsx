@@ -2,23 +2,22 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function EditCollection({
-  collections,
-  setCollections,
-  getCollections,
-}) {
+import { findById } from "../utils/CommonFunctions";
+
+export default function EditCollection({ collections, getCollections }) {
   // console.log("Inside CollectionForm: ", collections, setCollections);
 
-  const { collectionTitle } = useParams();
   const history = useHistory();
-
-  const collectionToEdit = collections.find(
-    (collection) => collection.title === collectionTitle
+  const { collectionId } = useParams();
+  const [collectionToEdit] = useState(findById(collections, collectionId));
+  const [collectionInputs, setCollectionInputs] = useState(
+    collectionToEdit && { ...collectionToEdit }
   );
 
-  const [collectionInputs, setCollectionInputs] = useState({
-    ...collectionToEdit,
-  });
+  if (!collectionToEdit) {
+    history.push("/not-found");
+    return null;
+  }
 
   const handleFormInput = (event) => {
     const inputName = event.target.name;
@@ -102,7 +101,7 @@ export default function EditCollection({
       />
       <div>
         <Button type="submit" variant="outlined">
-          Edit
+          Save
         </Button>
         <Button type="button" variant="outlined" onClick={handleDeleteButton}>
           Delete

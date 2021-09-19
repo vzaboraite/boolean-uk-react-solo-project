@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Collections from "./pages/Collections";
 import Collection from "./pages/Collection";
 import Exercise from "./pages/Exercise";
@@ -11,6 +10,7 @@ import Header from "./components/Header";
 import Exercises from "./components/Exercises";
 import CollectionForm from "./components/CollectionForm";
 import ExerciseForm from "./components/ExerciseForm";
+import EditExercise from "./components/EditExercise";
 import EditCollection from "./components/EditCollection";
 
 function App() {
@@ -54,50 +54,67 @@ function App() {
       });
   }
 
+  function getNewestData() {
+    getCollections();
+    getExercises();
+  }
+
   return (
     <>
       <Header />
       {!isLoading && (
         <Switch>
           <Route exact path="/">
-            <Home collections={collections} />
+            <Redirect push to="/collections" />
           </Route>
-          <Route exact path="/collections/new-collection">
-            <CollectionForm
-              collections={collections}
-              setCollections={setCollections}
-              getCollections={getCollections}
-            />
-          </Route>
-          <Route exact path="/collections/:collectionTitle/new-exercise">
-            <ExerciseForm
-              exercises={exercises}
-              collections={collections}
-              setExercises={setExercises}
-              getCollections={getCollections}
-            />
-          </Route>
+
           <Route exact path="/collections">
             <Collections collections={collections} />
           </Route>
-          <Route exact path="/collections/:collectionTitle">
+          <Route exact path="/collections/:collectionId/:collectionTitle">
             <Collection collections={collections} />
           </Route>
-          <Route exact path="/collections/:collectionTitle/edit-collection">
+          <Route exact path="/collections/new-collection">
+            <CollectionForm getCollections={getCollections} />
+          </Route>
+          <Route
+            exact
+            path="/collections/:collectionId/:collectionTitle/edit-collection"
+          >
             <EditCollection
               collections={collections}
-              setCollections={setCollections}
               getCollections={getCollections}
             />
           </Route>
+          <Route
+            exact
+            path="/collections/:collectionId/:collectionTitle/new-exercise"
+          >
+            <ExerciseForm
+              collections={collections}
+              getNewestData={getNewestData}
+            />
+          </Route>
+
           <Route exact path="/exercises">
             <Exercises exercises={exercises} />
           </Route>
           <Route exact path="/exercises/:exerciseId">
             <Exercise exercises={exercises} />
           </Route>
+          <Route exact path="/exercises/:exerciseId/edit-exercise">
+            <EditExercise
+              exercises={exercises}
+              collections={collections}
+              getNewestData={getNewestData}
+            />
+          </Route>
+
           <Route path="/not-found">
             <NotFound />
+          </Route>
+          <Route>
+            <Redirect push to="/not-found" />
           </Route>
         </Switch>
       )}

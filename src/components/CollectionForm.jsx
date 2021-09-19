@@ -2,25 +2,14 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function CollectionForm({
-  collections,
-  setCollections,
-  getCollections,
-}) {
-  // console.log("Inside CollectionForm: ", collections, setCollections);
+export default function CollectionForm({ getCollections }) {
   const history = useHistory();
-
   const [collectionInputs, setCollectionInputs] = useState({
     title: "",
     description: "",
   });
 
   const handleFormInput = (event) => {
-    console.log(
-      "Inside handleFormInput: ",
-      event.target.name,
-      event.target.value
-    );
     const inputName = event.target.name;
     const targetValue = event.target.value;
 
@@ -50,9 +39,7 @@ export default function CollectionForm({
 
     fetch("http://localhost:3030/collections", fetchOptions)
       .then((res) => res.json())
-      .then((newCollection) => {
-        console.log({ newCollection });
-        setCollections([...collections, newCollection]);
+      .then(() => {
         getCollections();
         history.push("/collections");
       });

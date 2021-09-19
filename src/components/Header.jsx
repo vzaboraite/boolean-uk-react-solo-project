@@ -6,14 +6,11 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/collections">Home</Link>
           </li>
           <li>
-            <Link to="/collections">Collections</Link>
-          </li>
-          {/* <li>
             <Link to="/exercises">Exercises</Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </header>

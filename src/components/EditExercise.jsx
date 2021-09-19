@@ -8,25 +8,30 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { findById } from "../utils/CommonFunctions";
 
-export default function EditExercise({ exercises, getCollections }) {
-  console.log("Inside ExerciseForm: ", exercises);
-
-  const { exerciseId } = useParams();
+export default function EditExercise({
+  exercises,
+  collections,
+  getNewestData,
+}) {
   const history = useHistory();
-
-  const exerciseToEdit = exercises.find(
-    (exercise) => exercise.id === parseInt(exerciseId)
+  const { exerciseId } = useParams();
+  const [exerciseToEdit] = useState(findById(exercises, exerciseId));
+  const [exerciseInputs, setExerciseInputs] = useState(
+    exerciseToEdit && { ...exerciseToEdit }
   );
 
-  console.log({ exerciseToEdit });
+  const collection =
+    exerciseToEdit && findById(collections, exerciseToEdit.collectionId);
 
-  const [exerciseInputs, setExerciseInputs] = useState({
-    ...exerciseToEdit,
-  });
+  if (!exerciseToEdit) {
+    history.push("/not-found");
+    return null;
+  }
 
-  const { id, collectionId, FEN, description, solution, difficulty } =
-    exerciseInputs;
+  const { id, collectionId } = exerciseToEdit;
+  const { FEN, description, solution, difficulty } = exerciseInputs;
 
   const handleFormInput = (event) => {
     const inputName = event.target.name;
@@ -60,8 +65,8 @@ export default function EditExercise({ exercises, getCollections }) {
       .then((res) => res.json())
       .then((newExercise) => {
         console.log({ newExercise });
-        getCollections();
-        history.push(`/exercises`);
+        getNewestData();
+        history.push(`/collections/${collectionId}/${collection.title}`);
       });
   };
 
@@ -72,8 +77,8 @@ export default function EditExercise({ exercises, getCollections }) {
     fetch(`http://localhost:3030/exercises/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
-        getCollections();
-        history.push(`/exercises`);
+        getNewestData();
+        history.push(`/collections/${collectionId}/${collection.title}`);
       });
   };
 
@@ -141,7 +146,7 @@ export default function EditExercise({ exercises, getCollections }) {
         />
       </RadioGroup>
       <Button type="submit" variant="outlined">
-        Edit
+        Save
       </Button>
       <Button type="button" variant="outlined" onClick={handleDeleteButton}>
         Delete
