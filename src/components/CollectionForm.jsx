@@ -69,6 +69,7 @@ export default function CollectionForm({
         variant="outlined"
         fullWidth
         margin="normal"
+        required
         onChange={handleFormInput}
       />
       <TextField

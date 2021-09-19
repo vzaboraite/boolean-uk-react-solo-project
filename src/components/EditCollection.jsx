@@ -83,6 +83,7 @@ export default function EditCollection({
         variant="outlined"
         fullWidth
         margin="normal"
+        required
         value={collectionInputs.title}
         onChange={handleFormInput}
       />
