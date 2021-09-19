@@ -89,6 +89,7 @@ export default function ExerciseForm({
         variant="outlined"
         fullWidth
         margin="normal"
+        required
         onChange={handleFormInput}
       />
       <TextField
@@ -109,17 +110,32 @@ export default function ExerciseForm({
         variant="outlined"
         fullWidth
         margin="normal"
+        required
         onChange={handleFormInput}
       />
-      <FormLabel component="legend">Set exercise difficulty:</FormLabel>
+      <FormLabel component="legend" required>
+        Set exercise difficulty:
+      </FormLabel>
       <RadioGroup
         aria-label="difficulty"
         name="difficulty"
         onChange={handleFormInput}
       >
-        <FormControlLabel value="easy" control={<Radio />} label="easy" />
-        <FormControlLabel value="medium" control={<Radio />} label="medium" />
-        <FormControlLabel value="hard" control={<Radio />} label="hard" />
+        <FormControlLabel
+          value="easy"
+          control={<Radio required={true} />}
+          label="easy"
+        />
+        <FormControlLabel
+          value="medium"
+          control={<Radio required={true} />}
+          label="medium"
+        />
+        <FormControlLabel
+          value="hard"
+          control={<Radio required={true} />}
+          label="hard"
+        />
       </RadioGroup>
       <Button type="submit" variant="outlined">
         Create
