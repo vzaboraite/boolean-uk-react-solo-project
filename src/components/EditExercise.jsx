@@ -65,6 +65,18 @@ export default function EditExercise({ exercises, getCollections }) {
       });
   };
 
+  const handleDeleteButton = () => {
+    const exerciseToDelete = { ...exerciseToEdit };
+    const { id } = exerciseToDelete;
+
+    fetch(`http://localhost:3030/exercises/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then(() => {
+        getCollections();
+        history.push(`/exercises`);
+      });
+  };
+
   return (
     <form onSubmit={handleFormSubmit}>
       <h2>Edit exercise</h2>
@@ -130,6 +142,9 @@ export default function EditExercise({ exercises, getCollections }) {
       </RadioGroup>
       <Button type="submit" variant="outlined">
         Edit
+      </Button>
+      <Button type="button" variant="outlined" onClick={handleDeleteButton}>
+        Delete
       </Button>
     </form>
   );
