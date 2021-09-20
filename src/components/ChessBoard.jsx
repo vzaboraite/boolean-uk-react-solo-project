@@ -1,5 +1,5 @@
 import "chessboard-element";
 
-export default function ChessBoard() {
-  return <chess-board position="start"></chess-board>;
+export default function ChessBoard({ position }) {
+  return <chess-board position={position}></chess-board>;
 }

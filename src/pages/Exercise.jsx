@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useParams, useHistory } from "react-router-dom";
+import ChessBoard from "../components/ChessBoard";
 import { findById } from "../utils/CommonFunctions";
 
 export default function Exercise({ exercises }) {
@@ -23,9 +24,9 @@ export default function Exercise({ exercises }) {
       <h2>Exercise #{id}</h2>
       <h3>Collection: {collectionId}</h3>
       <span>Difficulty: {difficulty}</span>
-      <p>Starting position: {FEN}</p>
       {description !== "" && <p>Description: {description}</p>}
       <p>Solution: {solution}</p>
+      <ChessBoard position={FEN} />
     </main>
   );
 }
