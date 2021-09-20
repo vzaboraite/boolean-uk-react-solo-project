@@ -41,7 +41,7 @@ export default function Collection({ collections }) {
       >
         Edit collection
       </Button>
-      <Exercises exercises={exercises} />
+      {exercises.length > 0 && <Exercises exercises={exercises} />}
     </main>
   );
 }
