@@ -17,7 +17,7 @@ export default function Exercise({ exercises }) {
   const { difficulty, FEN, description, id, collectionId, solution } = exercise;
 
   return (
-    <main>
+    <>
       <Button onClick={() => history.goBack()} variant="outlined">
         Back
       </Button>
@@ -27,6 +27,6 @@ export default function Exercise({ exercises }) {
       {description !== "" && <p>Description: {description}</p>}
       <p>Solution: {solution}</p>
       <ChessBoard position={FEN} />
-    </main>
+    </>
   );
 }

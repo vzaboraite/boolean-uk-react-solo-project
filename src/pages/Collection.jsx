@@ -18,7 +18,7 @@ export default function Collection({ collections }) {
   const { id, title, exercises } = collection;
 
   return (
-    <main>
+    <>
       <Button onClick={() => history.push("/collections")} variant="outlined">
         Back
       </Button>
@@ -42,6 +42,6 @@ export default function Collection({ collections }) {
         Edit collection
       </Button>
       {exercises.length > 0 && <Exercises exercises={exercises} />}
-    </main>
+    </>
   );
 }

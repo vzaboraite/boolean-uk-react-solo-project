@@ -63,60 +63,62 @@ function App() {
     <>
       <Header />
       {!isLoading && (
-        <Switch>
-          <Route exact path="/">
-            <Redirect push to="/collections" />
-          </Route>
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Redirect push to="/collections" />
+            </Route>
 
-          <Route exact path="/collections">
-            <Collections collections={collections} />
-          </Route>
-          <Route exact path="/collections/:collectionId/:collectionTitle">
-            <Collection collections={collections} />
-          </Route>
-          <Route exact path="/collections/new-collection">
-            <CollectionForm getCollections={getCollections} />
-          </Route>
-          <Route
-            exact
-            path="/collections/:collectionId/:collectionTitle/edit-collection"
-          >
-            <EditCollection
-              collections={collections}
-              getCollections={getCollections}
-            />
-          </Route>
-          <Route
-            exact
-            path="/collections/:collectionId/:collectionTitle/new-exercise"
-          >
-            <ExerciseForm
-              collections={collections}
-              getNewestData={getNewestData}
-            />
-          </Route>
+            <Route exact path="/collections">
+              <Collections collections={collections} />
+            </Route>
+            <Route exact path="/collections/:collectionId/:collectionTitle">
+              <Collection collections={collections} />
+            </Route>
+            <Route exact path="/collections/new-collection">
+              <CollectionForm getCollections={getCollections} />
+            </Route>
+            <Route
+              exact
+              path="/collections/:collectionId/:collectionTitle/edit-collection"
+            >
+              <EditCollection
+                collections={collections}
+                getCollections={getCollections}
+              />
+            </Route>
+            <Route
+              exact
+              path="/collections/:collectionId/:collectionTitle/new-exercise"
+            >
+              <ExerciseForm
+                collections={collections}
+                getNewestData={getNewestData}
+              />
+            </Route>
 
-          <Route exact path="/exercises">
-            <Exercises exercises={exercises} />
-          </Route>
-          <Route exact path="/exercises/:exerciseId">
-            <Exercise exercises={exercises} />
-          </Route>
-          <Route exact path="/exercises/:exerciseId/edit-exercise">
-            <EditExercise
-              exercises={exercises}
-              collections={collections}
-              getNewestData={getNewestData}
-            />
-          </Route>
+            <Route exact path="/exercises">
+              <Exercises exercises={exercises} />
+            </Route>
+            <Route exact path="/exercises/:exerciseId">
+              <Exercise exercises={exercises} />
+            </Route>
+            <Route exact path="/exercises/:exerciseId/edit-exercise">
+              <EditExercise
+                exercises={exercises}
+                collections={collections}
+                getNewestData={getNewestData}
+              />
+            </Route>
 
-          <Route path="/not-found">
-            <NotFound />
-          </Route>
-          <Route>
-            <Redirect push to="/not-found" />
-          </Route>
-        </Switch>
+            <Route path="/not-found">
+              <NotFound />
+            </Route>
+            <Route>
+              <Redirect push to="/not-found" />
+            </Route>
+          </Switch>
+        </main>
       )}
     </>
   );
