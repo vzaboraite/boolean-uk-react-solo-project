@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 export default function CollectionRow({ collection }) {
   const history = useHistory();
   return (
-    <li>
+    <li className="collection-card">
       <h2>{collection.title}</h2>
       <p>
         {collection.exercises.length}

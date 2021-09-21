@@ -63,7 +63,7 @@ function App() {
     <>
       <Header />
       {!isLoading && (
-        <main>
+        <main className="center">
           <Switch>
             <Route exact path="/">
               <Redirect push to="/collections" />

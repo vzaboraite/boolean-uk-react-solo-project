@@ -6,6 +6,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { findById } from "../utils/CommonFunctions";
@@ -145,12 +146,14 @@ export default function EditExercise({
           label="hard"
         />
       </RadioGroup>
-      <Button type="submit" variant="outlined">
-        Save
-      </Button>
-      <Button type="button" variant="outlined" onClick={handleDeleteButton}>
-        Delete
-      </Button>
+      <div className="action-btn">
+        <Button type="submit" variant="outlined">
+          Save
+        </Button>
+        <Button type="button" variant="outlined" onClick={handleDeleteButton}>
+          <DeleteIcon />
+        </Button>
+      </div>
     </form>
   );
 }

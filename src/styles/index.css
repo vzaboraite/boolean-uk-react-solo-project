@@ -1,15 +1,27 @@
 chess-board {
-  width: 350px;
-  margin: auto;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 300px;
 }
 
 #root {
   display: grid;
+  min-height: 100vh;
   grid-template-areas:
     "header"
     "main";
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
 }
+
+.center {
+  max-width: 1150px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header section */
 
 header {
   grid-area: header;
@@ -62,6 +74,80 @@ header .navigation > li a:hover {
   color: whitesmoke;
 }
 
+/* Main section */
+
 main {
   grid-area: main;
+  margin: 20px;
+  padding: 20px;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.exercises {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+  gap: 30px;
+  place-content: center;
+  place-items: center;
+}
+
+.action-btn {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+
+  place-content: center;
+}
+
+.buttons {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+  justify-content: end;
+  grid-auto-flow: column;
+}
+
+.button {
+  padding: 20px 0;
+}
+
+.collections {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+}
+
+.collection-card {
+  padding: 20px 0;
+  box-shadow: 0 0 2px 1px;
+  border-radius: 4px;
+
+  display: grid;
+  place-items: center;
+}
+/* Not found page */
+
+.not-found.gif-container {
+  padding-top: 50%;
+  position: relative;
+  width: 900px;
+}
+
+.not-found.gif-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Exercise section */
+.exercise-board {
+  width: 450px;
+  height: 450px;
 }

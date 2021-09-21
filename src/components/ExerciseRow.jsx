@@ -12,18 +12,20 @@ export default function ExerciseRow({ exercise }) {
       <span>Difficulty: {difficulty}</span>
       <ChessBoard position={FEN} />
 
-      <Button
-        onClick={() => history.push(`/exercises/${id}`)}
-        variant="outlined"
-      >
-        View exercise
-      </Button>
-      <Button
-        onClick={() => history.push(`/exercises/${id}/edit-exercise`)}
-        variant="outlined"
-      >
-        Edit exercise
-      </Button>
+      <div className="action-btn">
+        <Button
+          onClick={() => history.push(`/exercises/${id}`)}
+          variant="outlined"
+        >
+          View exercise
+        </Button>
+        <Button
+          onClick={() => history.push(`/exercises/${id}/edit-exercise`)}
+          variant="outlined"
+        >
+          Edit exercise
+        </Button>
+      </div>
     </li>
   );
 }

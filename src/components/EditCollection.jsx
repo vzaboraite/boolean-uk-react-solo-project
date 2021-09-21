@@ -1,4 +1,5 @@
 import { Button, TextField } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -72,7 +73,7 @@ export default function EditCollection({ collections, getCollections }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form className="center" onSubmit={handleFormSubmit}>
       <h2>Edit Collection</h2>
       <TextField
         id="title-input"
@@ -99,12 +100,18 @@ export default function EditCollection({ collections, getCollections }) {
         value={collectionInputs.description}
         onChange={handleFormInput}
       />
-      <div>
+
+      <div className="action-btn">
         <Button type="submit" variant="outlined">
           Save
         </Button>
-        <Button type="button" variant="outlined" onClick={handleDeleteButton}>
-          Delete
+        <Button
+          type="button"
+          variant="outlined"
+          margin="normal"
+          onClick={handleDeleteButton}
+        >
+          <DeleteIcon />
         </Button>
       </div>
     </form>

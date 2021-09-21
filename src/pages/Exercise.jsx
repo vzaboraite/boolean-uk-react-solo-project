@@ -18,7 +18,11 @@ export default function Exercise({ exercises }) {
 
   return (
     <>
-      <Button onClick={() => history.goBack()} variant="outlined">
+      <Button
+        onClick={() => history.goBack()}
+        variant="outlined"
+        color="success"
+      >
         Back
       </Button>
       <h2>Exercise #{id}</h2>
@@ -26,7 +30,7 @@ export default function Exercise({ exercises }) {
       <span>Difficulty: {difficulty}</span>
       {description !== "" && <p>Description: {description}</p>}
       <p>Solution: {solution}</p>
-      <ChessBoard position={FEN} />
+      <ChessBoard className="exercise-board" position={FEN} />
     </>
   );
 }

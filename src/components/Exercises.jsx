@@ -27,7 +27,7 @@ export default function Exercises({ exercises }) {
         difficulty={difficulty}
         onChange={handleDifficultyOptionsChange}
       />
-      <ul>
+      <ul className="exercises">
         {filteredExercises.map((exercise, index) => {
           return <ExerciseRow exercise={exercise} key={index} />;
         })}
