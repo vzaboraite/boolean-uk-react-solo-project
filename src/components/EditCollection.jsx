@@ -6,8 +6,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { findById } from "../utils/CommonFunctions";
 
 export default function EditCollection({ collections, getCollections }) {
-  // console.log("Inside CollectionForm: ", collections, setCollections);
-
   const history = useHistory();
   const { collectionId } = useParams();
   const [collectionToEdit] = useState(findById(collections, collectionId));
@@ -23,8 +21,6 @@ export default function EditCollection({ collections, getCollections }) {
   const handleFormInput = (event) => {
     const inputName = event.target.name;
     const targetValue = event.target.value;
-
-    console.log({ inputName, targetValue });
 
     setCollectionInputs({
       ...collectionInputs,
@@ -73,7 +69,7 @@ export default function EditCollection({ collections, getCollections }) {
   };
 
   return (
-    <form className="center" onSubmit={handleFormSubmit}>
+    <form className="center collection-form" onSubmit={handleFormSubmit}>
       <h2>Edit Collection</h2>
       <TextField
         id="title-input"
@@ -102,13 +98,20 @@ export default function EditCollection({ collections, getCollections }) {
       />
 
       <div className="action-btn">
-        <Button type="submit" variant="outlined">
+        <Button
+          type="submit"
+          variant="outlined"
+          color="success"
+          sx={{ fontWeight: 700, color: "success.dark" }}
+        >
           Save
         </Button>
         <Button
           type="button"
           variant="outlined"
           margin="normal"
+          color="success"
+          sx={{ color: "error" }}
           onClick={handleDeleteButton}
         >
           <DeleteIcon />

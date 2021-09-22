@@ -17,7 +17,7 @@ export default function Collection({ collections }) {
     return null;
   }
 
-  const { id, title, exercises } = collection;
+  const { id, title, description, exercises } = collection;
 
   return (
     <>
@@ -34,15 +34,6 @@ export default function Collection({ collections }) {
         <div className="buttons">
           <Button
             onClick={() =>
-              history.push(`/collections/${id}/${title}/new-exercise`)
-            }
-            variant="outlined"
-            color="success"
-          >
-            <AddIcon />
-          </Button>
-          <Button
-            onClick={() =>
               history.push(`/collections/${id}/${title}/edit-collection`)
             }
             variant="outlined"
@@ -53,7 +44,13 @@ export default function Collection({ collections }) {
         </div>
       </div>
       <h2>{title}</h2>
-      {exercises.length > 0 && <Exercises exercises={exercises} />}
+      <p className="description">{description}</p>
+      <Exercises
+        exercises={exercises}
+        addNewHandler={() =>
+          history.push(`/collections/${id}/${title}/new-exercise`)
+        }
+      />
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function ExerciseRow({ exercise }) {
   const { id, difficulty, FEN } = exercise;
 
   return (
-    <li>
+    <li className="exercise-card">
       <h2>Exercise #{id}</h2>
       <span>Difficulty: {difficulty}</span>
       <ChessBoard position={FEN} />

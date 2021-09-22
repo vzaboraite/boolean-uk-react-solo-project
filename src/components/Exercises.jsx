@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
+import AddIcon from "@mui/icons-material/Add";
 import ExerciseRow from "./ExerciseRow";
 import FilterByDifficultyForm from "./FilterByDifficultyForm";
 
-export default function Exercises({ exercises }) {
+export default function Exercises({ exercises, addNewHandler }) {
   const [difficulty, setDifficulty] = useState("");
 
   const handleDifficultyOptionsChange = (event) => {
@@ -23,11 +25,25 @@ export default function Exercises({ exercises }) {
 
   return (
     <>
-      <FilterByDifficultyForm
-        difficulty={difficulty}
-        onChange={handleDifficultyOptionsChange}
-      />
+      {exercises.length > 0 && (
+        <FilterByDifficultyForm
+          difficulty={difficulty}
+          onChange={handleDifficultyOptionsChange}
+        />
+      )}
       <ul className="exercises">
+        {addNewHandler && (
+          <div className="exercise">
+            <button
+              className="add-btn"
+              onClick={addNewHandler}
+              variant="outlined"
+              color="success"
+            >
+              <AddIcon sx={{ fontSize: 60 }} />
+            </button>
+          </div>
+        )}
         {filteredExercises.map((exercise, index) => {
           return <ExerciseRow exercise={exercise} key={index} />;
         })}

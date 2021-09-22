@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 import { useHistory } from "react-router-dom";
@@ -12,7 +11,7 @@ export default function Collections({ collections }) {
       <ul className="collections">
         <li>
           <button
-            className="collection add-btn"
+            className="add-btn"
             type="button"
             onClick={() => history.push("/collections/new-collection")}
           >

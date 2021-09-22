@@ -147,10 +147,21 @@ export default function EditExercise({
         />
       </RadioGroup>
       <div className="action-btn">
-        <Button type="submit" variant="outlined">
+        <Button
+          type="submit"
+          variant="outlined"
+          color="success"
+          sx={{ fontWeight: 700, color: "success.dark" }}
+        >
           Save
         </Button>
-        <Button type="button" variant="outlined" onClick={handleDeleteButton}>
+        <Button
+          type="button"
+          variant="outlined"
+          color="success"
+          sx={{ color: "success.dark" }}
+          onClick={handleDeleteButton}
+        >
           <DeleteIcon />
         </Button>
       </div>

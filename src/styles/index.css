@@ -89,6 +89,7 @@ h2 {
 }
 
 .exercises {
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
   gap: 30px;
@@ -101,7 +102,7 @@ h2 {
   grid-auto-flow: column;
   gap: 10px;
 
-  place-content: center;
+  place-content: start;
 }
 
 .btn-group {
@@ -133,6 +134,8 @@ h2 {
   background-color: rgba(245, 245, 245, 0.274);
 }
 
+/* Collections section */
+
 .collections {
   padding: 2rem 0;
   display: grid;
@@ -142,7 +145,8 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
 }
 
-.collection.add-btn {
+.collections .add-btn,
+.collection .add-btn {
   width: 450px;
   height: 200px;
 
@@ -152,7 +156,8 @@ h2 {
 }
 
 .collection-card,
-.collection.add-btn {
+.collections .add-btn,
+.collection .add-btn {
   padding: 20px 0;
   box-shadow: 0 0 2px 1px;
   border-radius: 4px;
@@ -170,6 +175,17 @@ h2 {
 .collection-card p {
   margin-bottom: 2rem;
 }
+
+.collection {
+  display: grid;
+  justify-content: center;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* Not found page */
 
 .not-found.gif-container {
@@ -186,6 +202,15 @@ h2 {
 
 /* Exercise section */
 
+.exercise-card {
+  padding-bottom: 20px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  box-shadow: 0 0 1px 0px;
+  border-radius: 2px;
+}
+
 .exercise {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -200,4 +225,21 @@ h2 {
 
 .exercise .text {
   line-height: 2;
+}
+
+.exercise .add-btn {
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  background-color: rgba(245, 245, 245, 0.274);
+  border: none;
+  box-shadow: 0 0 2px 0;
+  border-radius: 2px;
+
+  transition: linear 150ms;
+}
+
+.exercise .add-btn:hover,
+.collections .add-btn:hover {
+  background-color: #e4e4e4b6;
 }
