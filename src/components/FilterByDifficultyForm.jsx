@@ -1,7 +1,6 @@
 export default function FilterByDifficultyForm({ difficulty, onChange }) {
   return (
-    <form id="filter-by-type-form" autocompete="off">
-      <label htmlFor="filter-by-type"></label>
+    <form id="filter-form">
       <select
         name="filter-by-difficulty"
         id="filter-by-difficulty"

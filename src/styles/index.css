@@ -122,6 +122,15 @@ h2 {
   display: grid;
   justify-content: start;
 }
+
+#filter-form {
+  display: grid;
+  justify-items: end;
+}
+
+#filter-form select {
+  padding: 2px 5px;
+  background-color: rgba(245, 245, 245, 0.274);
 }
 
 .collections {
