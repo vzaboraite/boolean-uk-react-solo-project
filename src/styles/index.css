@@ -104,6 +104,12 @@ h2 {
   place-content: center;
 }
 
+.btn-group {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
 .buttons {
   display: grid;
   gap: 10px;
@@ -112,8 +118,10 @@ h2 {
   grid-auto-flow: column;
 }
 
-.button {
-  padding: 20px 0;
+.back-btn {
+  display: grid;
+  justify-content: start;
+}
 }
 
 .collections {

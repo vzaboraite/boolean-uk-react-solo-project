@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import { useParams, useHistory } from "react-router-dom";
 import Exercises from "../components/Exercises";
@@ -20,32 +21,38 @@ export default function Collection({ collections }) {
 
   return (
     <>
-      <Button onClick={() => history.push("/collections")} variant="outlined">
-        Back
-      </Button>
-      <h2>{title}</h2>
-      <p>
-        {exercises.length}
-        {exercises.length === 1 ? " exercise" : " exercises"}
-      </p>
-      <div className="buttons">
-        <Button
-          onClick={() =>
-            history.push(`/collections/${id}/${title}/new-exercise`)
-          }
-          variant="outlined"
-        >
-          <AddIcon />
-        </Button>
-        <Button
-          onClick={() =>
-            history.push(`/collections/${id}/${title}/edit-collection`)
-          }
-          variant="outlined"
-        >
-          Edit collection
-        </Button>
+      <div className="btn-group">
+        <div className="back-btn">
+          <Button
+            onClick={() => history.push("/collections")}
+            variant="outlined"
+            color="success"
+          >
+            <ArrowBackIosIcon />
+          </Button>
+        </div>
+        <div className="buttons">
+          <Button
+            onClick={() =>
+              history.push(`/collections/${id}/${title}/new-exercise`)
+            }
+            variant="outlined"
+            color="success"
+          >
+            <AddIcon />
+          </Button>
+          <Button
+            onClick={() =>
+              history.push(`/collections/${id}/${title}/edit-collection`)
+            }
+            variant="outlined"
+            color="success"
+          >
+            Edit collection
+          </Button>
+        </div>
       </div>
+      <h2>{title}</h2>
       {exercises.length > 0 && <Exercises exercises={exercises} />}
     </>
   );
