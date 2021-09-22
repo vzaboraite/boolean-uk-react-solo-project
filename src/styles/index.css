@@ -84,7 +84,7 @@ main {
 
 h2 {
   margin: 20px 0;
-  font-size: 2rem;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -125,20 +125,31 @@ h2 {
 }
 
 .collections {
+  padding: 2rem 0;
   display: grid;
   gap: 20px;
   justify-content: center;
 
-  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
 }
 
-.collection-card {
+.collection.add-btn {
+  width: 450px;
+  height: 200px;
+
+  border: none;
+}
+
+.collection-card,
+.collection.add-btn {
   padding: 20px 0;
   box-shadow: 0 0 2px 1px;
   border-radius: 4px;
 
   display: grid;
   place-items: center;
+
+  background-color: whitesmoke;
 }
 /* Not found page */
 

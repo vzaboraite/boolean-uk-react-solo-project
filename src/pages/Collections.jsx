@@ -9,16 +9,16 @@ export default function Collections({ collections }) {
 
   return (
     <>
-      <div className="button">
-        <Button
-          onClick={() => history.push("/collections/new-collection")}
-          variant="outlined"
-        >
-          <AddIcon />
-        </Button>
-      </div>
-
       <ul className="collections">
+        <li>
+          <button
+            className="collection add-btn"
+            type="button"
+            onClick={() => history.push("/collections/new-collection")}
+          >
+            <AddIcon />
+          </button>
+        </li>
         {collections.map((collection, index) => {
           return <CollectionRow collection={collection} key={index} />;
         })}
