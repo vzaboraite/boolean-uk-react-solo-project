@@ -16,6 +16,8 @@ export default function CollectionRow({ collection }) {
           history.push(`/collections/${collection.id}/${collection.title}`)
         }
         variant="outlined"
+        color="success"
+        sx={{ fontWeight: 700 }}
       >
         View collection
       </Button>

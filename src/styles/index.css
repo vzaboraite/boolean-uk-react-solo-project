@@ -18,7 +18,7 @@ chess-board {
   max-width: 1150px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-top: 2rem;
 }
 
 /* Header section */
@@ -138,6 +138,8 @@ h2 {
   height: 200px;
 
   border: none;
+
+  cursor: pointer;
 }
 
 .collection-card,
@@ -150,6 +152,14 @@ h2 {
   place-items: center;
 
   background-color: whitesmoke;
+}
+
+.collection-card h2 {
+  margin-bottom: 0;
+}
+
+.collection-card p {
+  margin-bottom: 2rem;
 }
 /* Not found page */
 

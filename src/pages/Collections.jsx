@@ -16,7 +16,7 @@ export default function Collections({ collections }) {
             type="button"
             onClick={() => history.push("/collections/new-collection")}
           >
-            <AddIcon />
+            <AddIcon sx={{ fontSize: 40 }} />
           </button>
         </li>
         {collections.map((collection, index) => {
