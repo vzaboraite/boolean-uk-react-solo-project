@@ -16,12 +16,22 @@ export default function ExerciseRow({ exercise }) {
         <Button
           onClick={() => history.push(`/exercises/${id}`)}
           variant="outlined"
+          color="success"
+          sx={{
+            fontWeight: 700,
+            color: "success.dark",
+          }}
         >
           View exercise
         </Button>
         <Button
           onClick={() => history.push(`/exercises/${id}/edit-exercise`)}
           variant="outlined"
+          color="success"
+          sx={{
+            fontWeight: 700,
+            color: "success.dark",
+          }}
         >
           Edit exercise
         </Button>
