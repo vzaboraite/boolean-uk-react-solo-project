@@ -176,7 +176,19 @@ h2 {
 }
 
 /* Exercise section */
-.exercise-board {
-  width: 450px;
-  height: 450px;
+
+.exercise {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+}
+
+.exercise > chess-board {
+  margin-bottom: 20px;
+  width: 500px;
+  height: 500px;
+}
+
+.exercise .text {
+  line-height: 2;
 }

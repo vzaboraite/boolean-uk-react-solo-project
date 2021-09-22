@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useParams, useHistory } from "react-router-dom";
 import ChessBoard from "../components/ChessBoard";
 import { findById } from "../utils/CommonFunctions";
@@ -22,15 +23,38 @@ export default function Exercise({ exercises }) {
         onClick={() => history.goBack()}
         variant="outlined"
         color="success"
+        sx={{
+          fontWeight: 700,
+          color: "success.dark",
+        }}
       >
-        Back
+        <ArrowBackIosIcon />
       </Button>
       <h2>Exercise #{id}</h2>
-      <h3>Collection: {collectionId}</h3>
-      <span>Difficulty: {difficulty}</span>
-      {description !== "" && <p>Description: {description}</p>}
-      <p>Solution: {solution}</p>
-      <ChessBoard className="exercise-board" position={FEN} />
+      <div className="exercise chess-board">
+        <ChessBoard position={FEN} />
+        <div className="text">
+          {description !== "" && (
+            <p>
+              <b>Description:</b> {description}
+            </p>
+          )}
+          <p>
+            <b>Solution:</b> {solution}
+          </p>
+        </div>
+      </div>
+      <Button
+        onClick={() => history.push(`/exercises/${id}/edit-exercise`)}
+        variant="outlined"
+        color="success"
+        sx={{
+          fontWeight: 700,
+          color: "success.dark",
+        }}
+      >
+        Edit exercise
+      </Button>
     </>
   );
 }

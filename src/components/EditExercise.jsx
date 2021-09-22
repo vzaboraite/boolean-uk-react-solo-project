@@ -67,7 +67,7 @@ export default function EditExercise({
       .then((newExercise) => {
         console.log({ newExercise });
         getNewestData();
-        history.push(`/collections/${collectionId}/${collection.title}`);
+        history.push(`/exercises/${id}`);
       });
   };
 
