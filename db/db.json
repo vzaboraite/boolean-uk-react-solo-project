@@ -1,40 +1,82 @@
 {
   "collections": [
     {
-      "id": 1,
-      "title": "Advanced chess tactics",
-      "description": "This an advanced collection."
+      "title": "Beginner chess tactics",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Beginner chess tactics",
-      "description": "This is a collection for beginners."
+      "title": "Another collection",
+      "description": "",
+      "id": 2
+    },
+    {
+      "title": "Very hard exercises",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "id": 3
+    },
+    {
+      "title": "Another collection",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "id": 4
     }
   ],
   "exercises": [
     {
-      "id": 1,
-      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
-      "solution": "",
-      "difficulty": "hard",
-      "collectionId": 1
-    },
-    {
-      "id": 2,
-      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
-      "solution": "",
+      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
       "difficulty": "medium",
-      "collectionId": 1
+      "collectionId": 3,
+      "id": 1
     },
     {
-      "id": 3,
-      "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam.",
-      "solution": "",
+      "FEN": "1rr3k1/5ppp/8/8/8/7Q/3R4/3R3K",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
       "difficulty": "easy",
-      "collectionId": 2
+      "collectionId": 2,
+      "id": 2
+    },
+    {
+      "FEN": "r4rk1/1p3ppp/1ppp4/4p3/3PPn2/1BN2Pnq/PPPQ1R1N/3R2K1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "difficulty": "medium",
+      "collectionId": 4,
+      "id": 3
+    },
+    {
+      "FEN": "r1bqkbnr/pppppppp/2n5/8/8/8/PPPPPPPP/RNBQKBNR",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "difficulty": "easy",
+      "collectionId": 2,
+      "id": 4
+    },
+    {
+      "FEN": "5rk1/1Q3ppp/8/8/2B5/8/7K/3R4",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "difficulty": "medium",
+      "collectionId": 1,
+      "id": 5
+    },
+    {
+      "FEN": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "difficulty": "medium",
+      "collectionId": 1,
+      "id": 6
+    },
+    {
+      "FEN": "7Q/r2pk1pp/p3p3/1pb1N1q1/4n3/8/PPP2PPP/RN3RK1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id.",
+      "difficulty": "hard",
+      "collectionId": 1,
+      "id": 7
     }
   ]
 }
