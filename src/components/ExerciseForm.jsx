@@ -8,10 +8,13 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import useStore from "../store";
 import { findById } from "../utils/CommonFunctions";
 
-export default function ExerciseForm({ collections, getNewestData }) {
+export default function ExerciseForm({ setExercises, exercises }) {
   const history = useHistory();
+  const collections = useStore((state) => state.collections);
+  const setCollections = useStore((state) => state.setCollections);
   const { collectionId } = useParams();
   const [collection] = useState(findById(collections, collectionId));
   const [exerciseInputs, setExerciseInputs] = useState({
@@ -56,8 +59,22 @@ export default function ExerciseForm({ collections, getNewestData }) {
 
     fetch("http://localhost:3030/exercises", fetchOptions)
       .then((res) => res.json())
-      .then(() => {
-        getNewestData();
+      .then((data) => {
+        const updatedExercises = [...exercises, data];
+        setExercises(updatedExercises);
+
+        const updatedCollections = collections.map((_collection) => {
+          if (_collection.id === collection.id) {
+            return {
+              ..._collection,
+              exercises: [..._collection.exercises, data],
+            };
+          } else {
+            return _collection;
+          }
+        });
+        setCollections(updatedCollections);
+
         history.push(`/collections/${collection.id}/${collection.title}`);
       });
   };

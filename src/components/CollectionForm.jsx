@@ -1,9 +1,12 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import useStore from "../store";
 
-export default function CollectionForm({ getCollections }) {
+export default function CollectionForm() {
   const history = useHistory();
+  const collections = useStore((state) => state.collections);
+  const setCollections = useStore((state) => state.setCollections);
   const [collectionInputs, setCollectionInputs] = useState({
     title: "",
     description: "",
@@ -39,8 +42,13 @@ export default function CollectionForm({ getCollections }) {
 
     fetch("http://localhost:3030/collections", fetchOptions)
       .then((res) => res.json())
-      .then(() => {
-        getCollections();
+      .then((data) => {
+        console.log("data: ", data);
+
+        const newCollection = { ...data, exercises: [] };
+        const updatedCollections = [...collections, newCollection];
+        setCollections(updatedCollections);
+
         history.push("/collections");
       });
   };

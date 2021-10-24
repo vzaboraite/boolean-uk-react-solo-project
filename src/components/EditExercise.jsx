@@ -10,13 +10,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { findById } from "../utils/CommonFunctions";
+import useStore from "../store";
 
-export default function EditExercise({
-  exercises,
-  collections,
-  getNewestData,
-}) {
+export default function EditExercise({ exercises, setExercises }) {
   const history = useHistory();
+  const collections = useStore((state) => state.collections);
+  const setCollections = useStore((state) => state.setCollections);
   const { exerciseId } = useParams();
   const [exerciseToEdit] = useState(findById(exercises, exerciseId));
   const [exerciseInputs, setExerciseInputs] = useState(
@@ -66,7 +65,28 @@ export default function EditExercise({
       .then((res) => res.json())
       .then((newExercise) => {
         console.log({ newExercise });
-        getNewestData();
+        const updatedExercises = exercises.map((exercise) => {
+          return exercise.id === id ? newExercise : exercise;
+        });
+        setExercises(updatedExercises);
+
+        const updatedCollections = collections.map((collection) => {
+          if (collection.id === newExercise.collectionId) {
+            const updatedExercises = collection.exercises.map((exercise) => {
+              return exercise.id === id ? newExercise : exercise;
+            });
+
+            return {
+              ...collection,
+              exercises: updatedExercises,
+            };
+          } else {
+            return collection;
+          }
+        });
+
+        setCollections(updatedCollections);
+
         history.push(`/exercises/${id}`);
       });
   };
@@ -78,7 +98,26 @@ export default function EditExercise({
     fetch(`http://localhost:3030/exercises/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
-        getNewestData();
+        const updatedExercises = exercises.filter(
+          (exercise) => exercise.id !== id
+        );
+        setExercises(updatedExercises);
+
+        const updatedCollections = collections.map((collection) => {
+          if (collection.id === collectionId) {
+            const updatedExercises = collection.exercises.filter(
+              (exercise) => exercise.id !== id
+            );
+            return {
+              ...collection,
+              exercises: updatedExercises,
+            };
+          } else {
+            return collection;
+          }
+        });
+        setCollections(updatedCollections);
+
         history.push(`/collections/${collectionId}/${collection.title}`);
       });
   };

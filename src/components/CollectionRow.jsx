@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 
 export default function CollectionRow({ collection }) {
   const history = useHistory();
+
+  const updatedTitle = collection.title.split(" ").join("_");
   return (
     <li className="collection-card">
       <h2>{collection.title}</h2>
@@ -13,7 +15,7 @@ export default function CollectionRow({ collection }) {
       </p>
       <Button
         onClick={() =>
-          history.push(`/collections/${collection.id}/${collection.title}`)
+          history.push(`/collections/${collection.id}/${updatedTitle}`)
         }
         variant="outlined"
         color="success"

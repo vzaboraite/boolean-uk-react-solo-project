@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { findById } from "../utils/CommonFunctions";
+import useStore from "../store";
 
-export default function EditCollection({ collections, getCollections }) {
+export default function EditCollection() {
   const history = useHistory();
+  const collections = useStore((state) => state.collections);
+  const setCollections = useStore((state) => state.setCollections);
   const { collectionId } = useParams();
   const [collectionToEdit] = useState(findById(collections, collectionId));
   const [collectionInputs, setCollectionInputs] = useState(
@@ -51,7 +54,15 @@ export default function EditCollection({ collections, getCollections }) {
       .then((res) => res.json())
       .then((collectionData) => {
         console.log({ collectionData });
-        getCollections();
+        const updatedCollections = collections.map((collection) => {
+          if (collection.id === collectionToEdit.id) {
+            return { ...collectionData, exercises: [...collection.exercises] };
+          } else {
+            return collection;
+          }
+        });
+        setCollections(updatedCollections);
+
         history.push("/collections");
       });
   };
@@ -63,7 +74,11 @@ export default function EditCollection({ collections, getCollections }) {
     fetch(`http://localhost:3030/collections/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
-        getCollections();
+        const updatedCollections = collections.filter(
+          (collection) => collection.id !== id
+        );
+        setCollections(updatedCollections);
+
         history.push("/collections");
       });
   };

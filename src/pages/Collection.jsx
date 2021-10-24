@@ -1,14 +1,15 @@
 import { Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import { useParams, useHistory } from "react-router-dom";
 import Exercises from "../components/Exercises";
 import { findById } from "../utils/CommonFunctions";
+import useStore from "../store";
 
-export default function Collection({ collections }) {
+export default function Collection() {
   const history = useHistory();
   const { collectionId } = useParams();
+  const collections = useStore((state) => state.collections);
 
   const collection = findById(collections, collectionId);
 
@@ -18,6 +19,8 @@ export default function Collection({ collections }) {
   }
 
   const { id, title, description, exercises } = collection;
+
+  const updatedTitle = title.split(" ").join("_");
 
   return (
     <>
@@ -34,7 +37,7 @@ export default function Collection({ collections }) {
         <div className="buttons">
           <Button
             onClick={() =>
-              history.push(`/collections/${id}/${title}/edit-collection`)
+              history.push(`/collections/${id}/${updatedTitle}/edit-collection`)
             }
             variant="outlined"
             color="success"
@@ -48,7 +51,7 @@ export default function Collection({ collections }) {
       <Exercises
         exercises={exercises}
         addNewHandler={() =>
-          history.push(`/collections/${id}/${title}/new-exercise`)
+          history.push(`/collections/${id}/${updatedTitle}/new-exercise`)
         }
       />
     </>

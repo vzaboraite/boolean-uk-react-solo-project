@@ -2,9 +2,11 @@ import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import CollectionRow from "../components/CollectionRow";
+import useStore from "../store";
 
-export default function Collections({ collections }) {
+export default function Collections() {
   const history = useHistory();
+  const collections = useStore((state) => state.collections);
 
   return (
     <>
