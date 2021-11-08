@@ -21,6 +21,7 @@
     "zustand": "^3.5.10"
   },
   "scripts": {
+    "start-db": "npx json-server --watch db/db.json --routes db/routes.json --port 3030",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
